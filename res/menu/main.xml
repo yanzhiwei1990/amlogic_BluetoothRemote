@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dialog.raw.MainActivity" >
+
+    <item
+            android:id="@+id/restart_scan"
+            android:orderInCategory="100"
+            android:showAsAction="always"
+            android:icon="@drawable/ic_menu_refresh"
+            android:title="@string/menu_refresh"
+            />
+    <item
+        android:id="@+id/disconnect"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/menu_disconnect"
+        android:visible="false"
+        />
+</menu>

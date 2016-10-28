@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="app_name">藍牙遙控器</string>
+    <string name="firmware_version">amlogic012</string>
+    <string name="latest_version">最新版本：</string>
+    <string name="default_version">默認版本：amlogic007</string>
+    <string name="firmwareupdate">發現新版藍牙遙控器固件</string>
+    <string name="update_now">更新</string>
+    <string name="ignore">忽略</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Manufacturer">Manufacturer</string>
+    <string name="no_info">無信息</string>
+    <string name="Patch_device">Patch device</string>
+    <string name="Update_device">更新設備</string>
+    <string name="Memory_type">內存型號</string>
+    <string name="System">System</string>
+    <string name="Retention">Retention</string>
+    <string name="I2C">I2C</string>
+    <string name="SPI">SPI</string>
+    <string name="Patch_base_address">Patch base address</string>
+    <string name="MISO_GPIO">MISO GPIO</string>
+    <string name="MOSI_GPIO">MOSI GPIO</string>
+    <string name="CS_GPIO">CS GPIO</string>
+    <string name="SCK_GPIO">SCK GPIO</string>
+    <string name="I2C_device_address">I2C device address</string>
+    <string name="SCL_GPIO">SCL GPIO</string>
+    <string name="SDA_GPIO">SDA GPIO</string>
+    <string name="Image_bank">Image bank</string>
+    <string name="Block_size">Block size</string>
+    <string name="blockSize">1</string>
+    <string name="Send_to_device">發送給設備</string>
+    <string name="Close">Close</string>
+
+    <string name="menu_refresh">刷新</string>
+    <string name="menu_disconnect">斷開連接</string>
+
+    <string name="allowed_hex_chars">0123456789abcdefABCDEFx</string>
+    <string name="button_text_color">#00BCF3</string>
+
+    <string name="app_devices_title">設備選擇</string>
+    <string-array name="app_device_titles">
+        <item>設備信息</item>
+        <item>文件選擇</item>
+        <item>參數設置</item>
+        <item>傳輸文件</item>
+    </string-array>
+
+    <string-array name="gpio_values">
+        <item id="0x00">P0_0</item>
+        <item id="0x01">P0_1</item>
+        <item id="0x02">P0_2</item>
+        <item id="0x00">P0_3</item>
+        <item id="0x00">P0_4</item>
+        <item id="0x00">P0_5</item>
+        <item id="0x00">P0_6</item>
+        <item id="0x00">P0_7</item>
+        <item id="0x00">P1_0</item>
+        <item id="0x01">P1_1</item>
+        <item id="0x02">P1_2</item>
+        <item id="0x00">P1_3</item>
+        <item id="0x00">P2_0</item>
+        <item id="0x01">P2_1</item>
+        <item id="0x02">P2_2</item>
+        <item id="0x00">P2_3</item>
+        <item id="0x00">P2_4</item>
+        <item id="0x00">P2_5</item>
+        <item id="0x00">P2_6</item>
+        <item id="0x00">P2_7</item>
+        <item id="0x00">P2_8</item>
+        <item id="0x00">P2_9</item>
+        <item id="0x00">P3_0</item>
+        <item id="0x01">P3_1</item>
+        <item id="0x02">P3_2</item>
+        <item id="0x00">P3_3</item>
+        <item id="0x00">P3_4</item>
+        <item id="0x00">P3_5</item>
+        <item id="0x00">P3_6</item>
+        <item id="0x00">P3_7</item>
+    </string-array>
+
+    <string-array name="image_bank_addresses">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

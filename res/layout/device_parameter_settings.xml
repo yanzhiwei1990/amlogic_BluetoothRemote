@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/sendToDeviceButton"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="@string/Memory_type"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/memoryTypeSystemRam"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/radio_button"
+                        android:text="@string/System"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:textColor="@drawable/radio_button_text_color"
+                        android:padding="@dimen/radio_button_padding"/>
+
+                    <RadioButton
+                        android:id="@+id/memoryTypeRetentionRam"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/radio_button"
+                        android:text="@string/Retention"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:textColor="@drawable/radio_button_text_color"
+                        android:padding="@dimen/radio_button_padding"/>
+
+                    <RadioButton
+                        android:id="@+id/memoryTypeI2C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/radio_button"
+                        android:text="@string/I2C"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:textColor="@drawable/radio_button_text_color"
+                        android:padding="@dimen/radio_button_padding"/>
+
+                    <RadioButton
+                        android:id="@+id/memoryTypeSPI"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/radio_button"
+                        android:text="@string/SPI"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:textColor="@drawable/radio_button_text_color"
+                        android:padding="@dimen/radio_button_padding"/>
+                </LinearLayout>
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/patchBaseAddressContainer"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="@string/Patch_base_address"/>
+
+                <EditText
+                    android:id="@+id/patchBaseAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:digits="@string/allowed_hex_chars"
+                    android:inputType="textCapCharacters"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/pSpiContainer"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="1.0">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/MISO_GPIO"/>
+
+                        <Spinner
+                            android:id="@+id/misoGpioSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/MOSI_GPIO"/>
+
+                        <Spinner
+                            android:id="@+id/mosiGpioSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="1.0">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/CS_GPIO"/>
+
+                        <Spinner
+                            android:id="@+id/csGpioSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/SCK_GPIO"/>
+
+                        <Spinner
+                            android:id="@+id/sckGpioSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/pI2cContainer"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="1.0">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/I2C_device_address"/>
+
+                        <EditText
+                            android:id="@+id/I2CDeviceAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:digits="@string/allowed_hex_chars"
+                            android:inputType="textCapCharacters"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/SCL_GPIO"/>
+
+                        <Spinner
+                            android:id="@+id/sclGpioSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="1.0">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dip"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="@string/SDA_GPIO"/>
+
+                        <Spinner
+                            android:id="@+id/sdaGpioSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imageBankContainer"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="@string/Image_bank"/>
+
+                <Spinner
+                    android:id="@+id/imageBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blockSizeContainer"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="@string/Block_size"/>
+
+                <EditText
+                    android:id="@+id/blockSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="@string/blockSize"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/sendToDeviceButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button"
+        style="@style/button_text"
+        android:textColor="@drawable/button_text_color"
+        android:text="@string/Send_to_device"/>
+</RelativeLayout>
