@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,14 +16,14 @@
         android:layout_above="@+id/btn_fasong"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="75dp"
-        android:text="btn_about" />
+        android:text="@string/btn_about" />
 	<Button
         android:id="@+id/btn_fasong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:text="btn_fasong" />
+        android:text="@string/btn_fasong" />
     <Button
         android:id="@+id/btn_guangbo"
         android:layout_width="wrap_content"
@@ -29,10 +31,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="79dp"
-        android:text="btn_guangbo" />
-
-    
-
-    
-
+        android:text="@string/btn_guangbo" />
 </RelativeLayout>

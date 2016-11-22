@@ -34,7 +34,9 @@
 
     <string name="menu_refresh">刷新</string>
     <string name="menu_disconnect">斷開連接</string>
-
+	<string name="btn_about">btn_about</string>
+    <string name="btn_fasong">btn_fasong</string>
+    <string name="btn_guangbo">btn_guangbo</string>
     <string name="allowed_hex_chars">0123456789abcdefABCDEFx</string>
     <string name="button_text_color">#00BCF3</string>
 

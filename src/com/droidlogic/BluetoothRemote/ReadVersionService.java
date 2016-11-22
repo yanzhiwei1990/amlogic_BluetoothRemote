@@ -54,6 +54,8 @@ public class ReadVersionService extends Service {
     Callback callback;
     Context mContext;
     private boolean HasRemote = false;
+    private boolean registerReceiver_flag;
+    private boolean connectTask_flag = false;
     private String READ_VERSION = "";
     private String LATEST_VERSION = "";
     
@@ -74,23 +76,8 @@ public class ReadVersionService extends Service {
 		new Handler().postDelayed(new Runnable()
 		{  
 		    public void run()
-		    {  
-		    	if (readservice_flag && HasRemote) {
-		    		Log.d(TAG, "read version service unregisterReceiver after 10 s");
-		    		unregisterReceiver(bluetoothGattReceiver_service);
-		    		if (connectTask != null) {
-		    			connectTask.cancel();
-		    		}
-		    		if (gatt != null) {
-		    			gatt.close();
-		    		}
-					mBluetoothDevice = null;
-		    	}
-		    	if (readservice_flag) {
-		    		readservice_flag = false;
-		    		Log.d(TAG, "read version service ended after 10 s");
-			    	stopSelf();
-		    	}
+		    {  	
+		    	stopSelf();
 		    	Log.d(TAG, "Handler().postDelayed");
 		    }  
 		 }, 12000); 
@@ -104,7 +91,7 @@ public class ReadVersionService extends Service {
 		            public void onClick(DialogInterface dialog, int whichButton) { 
 		            	Log.d(TAG, "OK is Clicked! "); 
 		                Intent i = new Intent(getApplicationContext(), DeviceActivity.class);
-		                i.putExtra("device",mBluetoothDevice);
+		                //i.putExtra("device",mBluetoothDevice);
 		                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK ); 
 		                getApplicationContext().startActivity(i);
 		            	//stopSelf();
@@ -144,7 +131,7 @@ public class ReadVersionService extends Service {
 			}
 			Log.d(TAG, "bluetooth is turned on ");
 		}
-		if (BluetoothAdapter.STATE_ON == mBluetoothAdapter.getState()) {
+		if (mBluetoothAdapter != null && BluetoothAdapter.STATE_ON == mBluetoothAdapter.getState()) {
 			mBondedDevices = mBluetoothAdapter.getBondedDevices();
 			if (mBondedDevices != null) {
 				if ( mBondedDevices.size() > 0) {
@@ -155,7 +142,7 @@ public class ReadVersionService extends Service {
 						if (device.getName().equals(RemoteName)) {
 							mBluetoothDevice = device;
 							HasRemote = true;
-							WaitCount = 10;
+							WaitCount = 2;
 							while (BluetoothDevice.BOND_BONDED != mBluetoothDevice.getBondState()) {
 								Log.d(TAG, "not BOND: "+mBluetoothDevice.getBondState());
 								delay(2000);
@@ -173,34 +160,14 @@ public class ReadVersionService extends Service {
 							WaitCount = 2;
 							while (!gatt.connect()) {	
 								delay(2000);
-								Log.d(TAG, "WAIT FOR CONNECT: "+(10-WaitCount)*2+" s");
+								Log.d(TAG, "WAIT FOR CONNECT!");
 								WaitCount--;
 								if (WaitCount == 0) {
 									Log.d(TAG, "CONNECT FAIL");
 									break;
 								}
 							}
-							/*
-							WaitCount = 2;
-							delay(2000);
-							while (readservice_flag) {
-								Log.d(TAG, "not get firmware version retry!!");
-								WaitCount--;
-								gatt.close();
-								connectTask.cancel();
-								connectTask = null;
-								callback = null;
-								gatt = null;
-								connectTask = new DeviceConnectTask(this, mBluetoothDevice);
-								callback = new Callback(connectTask);
-								gatt = mBluetoothDevice.connectGatt(this, false, callback);	
-								gatt.connect();
-								if (WaitCount == 0) {
-									break;
-								}
-								delay(2000);
-							}
-							*/
+							connectTask_flag = true;
 						}
 					}
 				}
@@ -208,7 +175,6 @@ public class ReadVersionService extends Service {
 		}
 		if (!HasRemote) {
 			Log.d(TAG, "NOT FOUND REMOTE");
-			stopSelf();
 		}	
 	}
 	public void processStep(Intent intent) {
@@ -228,16 +194,11 @@ public class ReadVersionService extends Service {
 			}
 			if(index == 2 && temp1 < temp2) {
 				Log.d(TAG, "get right index:  " + index+"  value: "+value);
-				connectTask.cancel();
-				gatt.close();
-				Log.d(TAG, "characteristic read completed");
-				unregisterReceiver(bluetoothGattReceiver_service);
 				CallForDialog();
-				stopSelf();
 			}
 			readNextCharacteristic(); 
 		}
-		if(newStep ==0 && readservice_flag){
+		if(newStep == 0) {
 			List<BluetoothGattService> services = BluetoothGattSingleton.getGatt().getServices();
 			for (BluetoothGattService service : services) {
 				List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
@@ -254,7 +215,8 @@ public class ReadVersionService extends Service {
 	public void readNextCharacteristic() {
 		Log.d(TAG, "readNextCharacteristic start");
 		if (characteristics_READ != null) {
-			BluetoothGattSingleton.getGatt().readCharacteristic(characteristics_READ);		            
+			BluetoothGattSingleton.getGatt().readCharacteristic(characteristics_READ);
+			characteristics_READ = null;
 		}
 	}
 	@Override 
@@ -276,7 +238,16 @@ public class ReadVersionService extends Service {
       
     @Override  
     public void onDestroy() {  
-        Log.i(TAG, "ReadVersionService-onDestroy");  
+        Log.i(TAG, "ReadVersionService-onDestroy");
+        if (connectTask_flag) {
+			connectTask_flag = false;
+			gatt.disconnect();
+			gatt.close();;
+		}
+        if (registerReceiver_flag) {
+			registerReceiver_flag = false;
+			unregisterReceiver(bluetoothGattReceiver_service);
+		}
         super.onDestroy();  
     } 
 }
