@@ -35,7 +35,7 @@ import java.util.UUID;
 public class ScanActivity extends SuotaActivity implements OnItemClickListener {
     private final static String TAG = "ScanActivity";
     private final static int REQUEST_ENABLE_BT = 1;
-
+    private static final String RemoteName = "RemoteB008";
     private boolean isScanning = false;
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -249,9 +249,11 @@ public class ScanActivity extends SuotaActivity implements OnItemClickListener {
                             long id) {
         stopDeviceScan();
         BluetoothDevice device = bluetoothDeviceList.get(position);
-        Intent i = new Intent(ScanActivity.this, DeviceActivity.class);
-        i.putExtra("device", device);
-	  Log.d(TAG, " device  position: "+position);
-        startActivity(i);
+        if (RemoteName.equals(device.getName())) {
+            Intent i = new Intent(ScanActivity.this, DeviceActivity.class);
+            i.putExtra("device", device);
+            Log.d(TAG, " device  position: "+position);
+            startActivity(i);
+        }
     }
 }
