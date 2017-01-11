@@ -604,7 +604,7 @@ public class DeviceActivity extends SuotaActivity implements AdapterView.OnItemC
 		InputStream is = null;
 		
 		if (filename.endsWith(getResources().getString(R.string.firmware_version))) {
-			is = this.getResources().openRawResource(R.raw.amlogic012);
+			is = this.getResources().openRawResource(R.raw.amlogic018);
 		}
 		else {
 			is = this.getResources().openRawResource(R.raw.stableversion);

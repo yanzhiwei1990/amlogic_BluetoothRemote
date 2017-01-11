@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">蓝牙遥控器</string>
-    <string name="firmware_version">amlogic012</string>
+    <string name="firmware_version">amlogic018</string>
     <string name="latest_version">最新版本：</string>
     <string name="default_version">默认版本：amlogic007</string>
     <string name="firmwareupdate">发现新版本蓝牙遥控器固件</string>

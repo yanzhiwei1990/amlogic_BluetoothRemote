@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">BluetoothRemote</string>
-    <string name="firmware_version">amlogic012</string>
+    <string name="firmware_version">amlogic018</string>
     <string name="latest_version">LatestVersion:</string>
     <string name="default_version">DefaultVersion:amlogic007</string>
     <string name="firmwareupdate">Find new firmware for bluetoothremote</string>
