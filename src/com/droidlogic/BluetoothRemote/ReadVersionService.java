@@ -139,7 +139,7 @@ public class ReadVersionService extends Service {
 					for (BluetoothDevice device : mBondedDevices) {     
 						Log.d(TAG, "startDeviceScan:device name: "+device.getName()+ 
 			            		"  device  Address: "+device.getAddress());
-						if (device.getName().equals(RemoteName)) {
+						if (device.getName() != null && device.getName().equals(RemoteName)) {
 							mBluetoothDevice = device;
 							HasRemote = true;
 							WaitCount = 2;

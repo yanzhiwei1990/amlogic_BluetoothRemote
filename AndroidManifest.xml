@@ -39,7 +39,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BLUETOOTH_GATT_UPDATE" />
+                <!--<action android:name="android.intent.action.BLUETOOTH_GATT_UPDATE" />-->
             </intent-filter>
         </receiver>
         <receiver
