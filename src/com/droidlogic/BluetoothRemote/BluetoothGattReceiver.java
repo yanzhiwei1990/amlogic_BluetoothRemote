@@ -12,7 +12,7 @@ public class BluetoothGattReceiver extends BroadcastReceiver {
     @Override
     public void onReceive
             (Context context, Intent intent) {
-        Log.d("BluetoothGattReceiver", "onReceive£º "+intent.getAction());
+        Log.d("BluetoothGattReceiver", "onReceive" + intent.getAction());
     }
 
 }
